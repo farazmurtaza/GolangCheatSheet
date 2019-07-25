@@ -64,6 +64,8 @@ func main() {
 	//relational operators
 	// == != < > <= >=
 
+	// var j int = 0 or j := "something"
+
 	for j := 0; j < 5; j++ {
 		fmt.Println(j)
 	}
@@ -86,4 +88,21 @@ func main() {
 	default:
 		fmt.Println("nothing")
 	}
+
+	//arrays
+	var favNums2 [5]float64
+	favNums2[0] = 1.1
+	favNums2[1] = 1.2
+	favNums2[2] = 1.3
+	favNums2[3] = 1.4
+	favNums2[4] = 1.5
+
+	fmt.Println(favNums2[3])
+
+	favNums3 := [5]float64{1, 2, 3, 4, 5}
+
+	for i, value := range favNums3 {
+		fmt.Println(value, i)
+	}
+
 }
