@@ -117,8 +117,8 @@ func main() {
 
 	fmt.Println("numSlice[0]= ", numSlice2[0])
 
-	numSlice3 := make([]int, 10, 10)
-	for k := 0; k < 10; k++ {
+	numSlice3 := make([]int, 5, 10)
+	for k := 0; k < 5; k++ {
 		fmt.Println(numSlice3[k])
 	}
 	copy(numSlice3, numSlice)
@@ -127,4 +127,47 @@ func main() {
 	numSlice3 = append(numSlice3, 0, -1)
 
 	// fmt.Println(numSlice3[6])
+
+	presAge := make(map[string]int)
+
+	presAge["ABCDEFGH"] = 42
+
+	fmt.Println(presAge["ABCDEFGH"])
+	fmt.Println(presAge)
+	fmt.Println(len(presAge))
+
+	listNums := []float64{1, 2, 3, 4, 5}
+
+	fmt.Println("sum: ", addThemUp(listNums))
+
+	fmt.Println(SubtractThem(1, 2, 3, 4, 5))
+
+	num3 := 3
+
+	doubleNum := func() int {
+		num3 *= 2
+		return num3
+	}
+
+	fmt.Println(doubleNum())
+	fmt.Println(doubleNum())
+}
+
+func addThemUp(numbers []float64) float64 {
+	sum := 0.0
+
+	for _, val := range numbers {
+		sum += val
+	}
+	return sum
+}
+
+func SubtractThem(args ...int) int {
+	finalValue := 0
+
+	for _, value := range args {
+		finalValue -= value
+	}
+
+	return finalValue
 }
