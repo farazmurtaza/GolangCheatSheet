@@ -7,7 +7,7 @@ comment */
 
 func main() {
 	// fmt.Println("Hello world")
-
+	//
 	// variable name dataType
 	var age int = 21
 
@@ -105,4 +105,26 @@ func main() {
 		fmt.Println(value, i)
 	}
 
+	for _, value := range favNums3 {
+		fmt.Println(value)
+	}
+
+	//slice
+
+	numSlice := []int{5, 4, 3, 2, 1}
+
+	numSlice2 := numSlice[3:5] // index 3 to 5 but 5 not included
+
+	fmt.Println("numSlice[0]= ", numSlice2[0])
+
+	numSlice3 := make([]int, 10, 10)
+	for k := 0; k < 10; k++ {
+		fmt.Println(numSlice3[k])
+	}
+	copy(numSlice3, numSlice)
+	// fmt.Println(numSlice3[0])
+
+	numSlice3 = append(numSlice3, 0, -1)
+
+	// fmt.Println(numSlice3[6])
 }
