@@ -178,6 +178,31 @@ func main() {
 	yPtr := new(int)
 	changeYValuePointer(yPtr)
 	fmt.Println("value of Y is ", *yPtr) //* for the VALUE at yPtr
+
+	// initializing a struct variable
+
+	//if dont know the order
+	rect1 := Rectangle{leftX: 10, topY: 20, height: 8, width: 3}
+
+	//if know the order
+	rect2 := Rectangle{10, 20, 3, 8}
+
+	fmt.Println("Rectangle 1 is ", rect1.width, "wide")
+	fmt.Println("Rectangle 2 is ", rect2.width, "wide")
+
+	fmt.Println("Rectangle 1 has ", rect1.area(), "area")
+
+}
+
+type Rectangle struct {
+	leftX  float64
+	topY   float64
+	height float64
+	width  float64
+}
+
+func (rect *Rectangle) area() float64 {
+	return rect.width * rect.height
 }
 
 func changeYValuePointer(yptr *int) {
