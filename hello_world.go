@@ -151,6 +151,75 @@ func main() {
 
 	fmt.Println(doubleNum())
 	fmt.Println(doubleNum())
+
+	fmt.Println(factorial(4))
+
+	defer printTwo() // executes at the very end of function it is enclosed in, in this case the main function
+	printOne()
+	printOne()
+	printOne()
+	printOne()
+
+	fmt.Println(safeDiv(3, 0))
+	fmt.Println(safeDiv(3, 2))
+
+	demoPanic()
+
+	xVal := 0
+	changeXVal(xVal) // will not change value of xVal because it is just passing value and not reference(pointers will help to change values)
+	fmt.Println("x = ", xVal)
+
+	xVal2 := 0
+	changeXValPointer(&xVal2)
+	fmt.Println("x = ", xVal2)
+	fmt.Println("Memory adress of xVal2 is ", &xVal2)
+
+	//declaring a pointer variable
+	yPtr := new(int)
+	changeYValuePointer(yPtr)
+	fmt.Println("value of Y is ", *yPtr) //* for the VALUE at yPtr
+}
+
+func changeYValuePointer(yptr *int) {
+	*yptr = 100
+}
+
+func changeXValPointer(x *int) {
+	*x = 2
+}
+
+func changeXVal(x int) {
+	x = 2
+}
+
+// in case error occurs, it goes to panic which just prints out the error
+func demoPanic() {
+	defer func() {
+		// fmt.Println(recover())
+		fmt.Println(recover())
+	}()
+
+	panic("PANIC")
+
+}
+
+// in case an error occurs, program does not crash, it just ignores that value that caused the error
+func safeDiv(num1, num2 int) int {
+	defer func() {
+		// fmt.Println(recover())
+		recover()
+	}()
+
+	solution := num1 / num2
+	return solution
+}
+
+func printOne() {
+	fmt.Println(1)
+}
+
+func printTwo() {
+	fmt.Println(2)
 }
 
 func addThemUp(numbers []float64) float64 {
@@ -170,4 +239,12 @@ func SubtractThem(args ...int) int {
 	}
 
 	return finalValue
+}
+
+func factorial(num int) int {
+	if num == 0 {
+		return 1
+	}
+
+	return num * factorial(num-1)
 }
